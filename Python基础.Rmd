@@ -560,5 +560,7 @@ print(list(tup))
 print("\'") #输出单引号、双引号
 print("a\nb") #\n输出换行
 print("C:\\User\\H") #输出路径
+print("C:/user/H")
+print(r"C:\user\H") #去转义
 ```
 
