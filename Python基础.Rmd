@@ -1,0 +1,557 @@
+---
+title: 'Python基础'
+author: "Ahora"
+date: "2023-12-15"
+output: 
+  html_document:
+    toc : true
+    toc_float : true
+---
+
+# 第一章：对象与变量
+
+## 1.1 数据类型概述
+
+Python中六种标准数据类型
+
+- 数字 Number
+- 字符串 String
+- 列表 List
+- 元组 Tuple
+- 字典 Dictionary
+- 集合 Set
+- 布尔 bool
+
+### 1、数字
+
+```{python}
+x1 = 10
+x2 = 10.0
+print(x1,x2)
+```
+
+```{python}
+print(type(x1),type(x2))
+```
+
+### 2、字符串
+
+```{python}
+x3 = "hello world"
+print(type(x3))
+```
+
+### 3、列表（有序对象）List
+
+```{python}
+lst = [1,2,3,4,5]
+print(lst)
+print(type(lst))
+```
+
+```{python}
+lst2 = [1,2.5,"low",[1,2,3]]
+print(lst2[0])
+```
+
+### 4、元组（不可变的列表，不能二次赋值）
+
+```{python}
+tup = (1,2,3,4,5)
+lst = [1,2,3,4,5]
+lst[0] = 100
+print(lst)
+```
+
+### 5、字典dict
+
+由key和value构成，无序对象
+
+```{python}
+dic = {"a":100, "b":"hello"}
+print(dic)
+print(type(dic))
+```
+
+### 6、布尔
+
+```{python}
+print(True == 1)
+print(False == 0)
+print(True * 10)
+```
+
+### 7、对象转换
+
+- int()
+- float()
+- str()
+
+```{python}
+var1 = 10
+var2 = float(var1)
+print(var2,type(var2))
+```
+
+```{python}
+var3 = str(var1)
+print(var3,type(var3))
+```
+
+```{python}
+print(var2 + 1)
+```
+
+```{python}
+var4 = 10.8
+print(int(var4))
+```
+
+四舍五入使用round()函数
+
+## 1.2 变量
+
+变量命名规则
+
+- 第一个字符必须是字母或_
+- 变量名不能和功能性名字重合
+- 不要有空格
+- 常规命名法：下划线连接小写英文单词
+- 大驼峰命名法：每个单词首字母大写
+
+### 1、多变量赋值
+
+```{python}
+a = b = c = 1
+d, e, f = 3,4,5
+print(a,b,c,d,e,f)
+```
+
+## 1.3 运算符
+
+### 1、算数运算符
+
+取模，返回除法的余数
+
+```{python}
+a = 21
+b = 9
+c = a % b
+print(c)
+```
+
+次方
+
+```{python}
+a, b = 2, 3
+c = a**b
+print(c)
+```
+
+取整除数
+
+```{python}
+a, b = 10, 4
+c = a//b
+print(c)
+```
+
+
+### 2、比较运算符
+
+结果是True和False
+
+### 3、逻辑运算符
+
+结果是True和False
+
+- and
+- or
+- not
+
+布尔函数bool()
+
+只有0，None，空字符串，空列表，空字典为False
+
+```{python}
+a, b, c = 10.0, 0, "hello"
+print(bool(a))
+print(bool(b))
+print(bool(c))
+```
+
+### 4、成员运算符
+
+- in
+- notin
+
+```{python}
+lst = [1,2,3,4,5]
+dic = {"a":1 , "b":2, "c":3}
+st = "abcdef"
+```
+
+```{python}
+print(1 in lst)
+print("d" in dic)
+print("b" in st)
+print("h" in st)
+```
+
+## 1.4 注释
+
+```{python}
+m = []
+for i in range(10):
+  m.append("h"*i)
+  #print(m)
+print(m)
+```
+
+# 第二章：序列及序列常用操作
+
+## 2.1 序列
+
+每个元素会被分配一个序号，即元素的位置，即索引
+
+序列有顺序，字典没顺序
+
+序列没有key，只能通过位置对应值
+
+## 2.2 序列的通用操作
+
+可变序列list和不可变序列tuple、string都可用
+
+### 1、判断元素是否属于序列
+
+```{python}
+lst = [1,2,3,4,5]
+a,b = 1,10
+print(a in lst)
+print(b not in lst)
+```
+
+### 2、链接和重复
+
+```{python}
+lst1 = [1,2,3]
+lst2 = ['a', 'b']
+print(lst1 + lst2)
+print(lst1*3, lst2*2)
+```
+
+### 3、下标索引（指向列表中的一个元素）
+
+```{python}
+lst = [1,2,3,4,5,6,7,8]
+print(lst)
+print(lst[0],lst[2],lst[7])
+print(lst[-1],lst[-3])
+lst[4] = "hello"
+print(lst)
+```
+
+### 4、切片（指向列表中的多个元素）
+
+切片是左闭右开的
+
+```{python}
+print(lst)
+```
+
+第一个到第二个
+
+```{python}
+print(lst[0:2])
+```
+
+第三个到第五个
+
+```{python}
+print(lst[2:5])
+```
+
+倒数第三个到倒数第二个
+
+```{python}
+print(lst[-3:-1])
+```
+
+### 5、步长
+
+```{python}
+print(lst)
+print(lst[2:7:2])
+print(lst[:6:3])
+print(lst[1::2])
+print(lst[::2])
+```
+
+
+```{python}
+lst = "abcdefgh"
+print(lst)
+print(lst[2:7:2])
+print(lst[:6:3])
+print(lst[1::2])
+print(lst[::2])
+```
+
+### 6、序列的内置全局函数
+
+```{python}
+lst = [1,2,3,4,5,6,7,8,9,0]
+print(len(lst))
+print(max(lst),min(lst),sum(lst))
+```
+
+```{python}
+lst = [1,2,3,4,5,6,7,8,9,0]
+# .index方法，从列表中找某个值第一个匹配项的索引位置
+print(lst.index(2))
+```
+
+
+```{python}
+# .count方法，计算值出现的次数
+lst = [1,2,3,4,1,2,1,1,4]
+print(lst.count(4))
+```
+
+```{python}
+# .append方法，向列表里添加元素
+name1 = ['小明', '小红']
+print(name1 + ['团支书'])
+name1.append('团支书')
+print(name1)
+```
+
+
+## 2.3 列表和元组的常用操作
+
+### 1、列表特征
+
+- 一个列表中可包含任意对象
+- 序列顺序不能改变，通过下标索引访问序列中的值
+- 可随意变换列表长度，相当于指定新的列表
+- 可原位改变
+
+```{python echo=TRUE}
+lst1 = [1,2,3,'a','b','c',[1,2,3]]
+print(lst1)
+```
+
+R语言中一个向量只能保存一种数据类型，int会强制转换为str
+
+```{r echo=TRUE}
+l = c(1,2,3,'a','b','c')
+l
+l[2]
+```
+
+### 2、生成器
+
+- range()是生成器，指向了一个范围，生成的都是整数
+- range(5)代表指向了0，1，2，3，4
+- range(2,5)代表指向2,3,4
+- range(0,10,2)代表指向了0,2,4,6,8，第三个2代表步长
+- range中间是逗号，不是冒号
+- range本身不是列表，但是可以索引
+
+```{python}
+a = range(10)
+print(a)
+print(type(a))
+```
+
+将生成器变为列表
+
+```{python}
+a = range(10)
+lst = list(range(4,10,2))
+print(lst)
+```
+
+```{python}
+m = range(10)
+print(m)
+print(m[2], m[-1], m[5])
+```
+
+R语言中的列表生成
+
+```{r}
+k <- 1:10
+k
+```
+
+```{r}
+k <- seq(1,10,2)
+k
+```
+
+### 3、列表的常用操作
+
+#### （1）添加元素
+
+```{python}
+lst = list(range(10))
+print(lst + [1,2,3])
+```
+
+```{python}
+lst.append('a')
+print(lst)
+```
+
+```{python}
+# append会将对象像元素一样加在列表中
+a = [1,2,3]
+b = [3,4,5]
+a.append(b)
+print(a)
+```
+
+```{python}
+# extend会将列表直接拼接在一起
+a = [1,2,3]
+b = [3,4,5]
+a.extend(b)
+print(a)
+```
+
+#### （2）删除元素
+
+```{python}
+lst = list(range(10))
+print(lst)
+```
+
+```{python}
+# remove是方法，删除值为某数的值
+lst.remove(5)
+print(lst)
+```
+
+```{python}
+# del是语句
+del lst[0]
+print(lst)
+```
+
+```{python}
+del lst[2:4]
+print(lst)
+```
+
+```{python}
+# clear方法删除整个list所有值
+lst.clear()
+print(lst)
+```
+
+#### （3）插入元素
+
+```{python}
+lst = [1,2,3]
+# 在第一个元素前插入a
+lst.insert(0,'a')
+print(lst)
+```
+
+```{python}
+lst.insert(2,'b')
+print(lst)
+```
+
+#### （4）复制
+
+```{python}
+x = list(range(10))
+m = x
+print(x)
+print(m)
+```
+
+```{python}
+x[2] = 101
+print(m)
+```
+
+x和m都指向了同一个引用，该引用变化后，二者都变化
+
+```{python}
+x = list(range(10))
+m = x.copy()
+x[2] = 101
+print(m)
+```
+
+此时x变化后，m不变化
+
+#### （5）排序
+
+```{python}
+# .sort()方法
+lst1 = [1,222,3,35,2]
+lst2 = ['asd', 'sdfg' , 'fzc']
+lst1.sort(reverse = False)
+lst2.sort()
+print(lst1)
+print(lst2)
+```
+
+R语言中的排序
+
+```{r}
+ls <- c(21,3,45,6,213)
+sort(ls)
+```
+
+```{python}
+# sorted函数，排序并复制
+lst1 = [1,222,3,35,2]
+lst3 = sorted(lst1)
+print(lst1, lst3)
+```
+
+### 4、元组的常用操作
+
+```{python}
+# 当元组只有一个值时，需要在后面加逗号
+tup4 = (50,)
+```
+
+
+- 索引、切片、步长和list一样
+- 不能删除某个元素，只能删除整个元组
+- 不能做元素添加，排序
+
+```{python eval=F}
+tup = (1,2,3,4,5)
+del tup[1]
+```
+
+```{python eval=F}
+tup = (1,2,3,4,5)
+del tup
+tup
+```
+
+```{python}
+# list转tuple
+lst = list(range(10))
+tup = tuple(lst)
+print(tup)
+# tuple转list
+print(list(tup))
+```
+
+## 2.4 字符串的常用操作
+
+### 1、字符串引号
+
+```{python}
+
+```
+
