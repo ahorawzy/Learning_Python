@@ -551,7 +551,14 @@ print(list(tup))
 
 ### 1、字符串引号
 
-```{python}
+- 单引号
+- 双引号
+- 三引号
 
+```{python}
+# 转义字符\
+print("\'") #输出单引号、双引号
+print("a\nb") #\n输出换行
+print("C:\\User\\H") #输出路径
 ```
 
